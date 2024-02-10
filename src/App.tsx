@@ -1,22 +1,25 @@
 import { Link, Route, Routes } from 'react-router-dom';
-// import { AboutPage } from './pages/AboutPage/AboutPage';
 import { AboutPageAsync } from './pages/AboutPage/AboutPageAsync';
-import { MainPage } from './pages/MainPage/MainPage';
+import { MainPageAsync } from './pages/MainPage/MainPageAsync';
 
-import './index.scss';
 import { Suspense } from 'react';
+import './styles/index.scss';
+import { useTheme } from './theme/useTheme';
 
 export const App = () => {
+    const { theme, toggleTheme } = useTheme();
+
     return (
-        <div className="app">
-            <Link to={'/'}>Main page</Link>
-            <Link to={'/about'}>About page</Link>
-            <Suspense fallback="loading...">
+        <div className={`app ${theme}`}>
+            <Link to="/">Main page</Link>
+            <Link to="/about">About page</Link>
+            <Suspense fallback={<div>loading...</div>}>
                 <Routes>
-                    <Route path={'/'} element={<MainPage />} />
-                    <Route path={'/about'} element={<AboutPageAsync />} />
+                    <Route path="/" element={<MainPageAsync />} />
+                    <Route path="/about" element={<AboutPageAsync />} />
                 </Routes>
             </Suspense>
+            <button onClick={toggleTheme}>Change theme</button>
         </div>
     );
 };
