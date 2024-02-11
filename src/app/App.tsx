@@ -6,14 +6,14 @@ import './styles/index.scss';
 import { Navbar } from 'widgets/Navbar';
 
 export const App = () => {
-    const { theme, toggleTheme } = useTheme();
+    const { theme } = useTheme();
 
     return (
         <div className={classNames('app', {}, [theme])}>
             <Navbar />
             <AppRouter />
             <div>
-                <button onClick={toggleTheme}>Change theme</button>
+                
             </div>
         </div>
     );

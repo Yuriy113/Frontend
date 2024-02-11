@@ -2,6 +2,4 @@ export function someFn(arg: number): string {
     console.log(arg);
 
     return `hello ${arg}`;
-
-    //
 }
