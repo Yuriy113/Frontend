@@ -9,8 +9,12 @@
         "moduleResolution": "node",
         "baseUrl": ".",
         "paths": {
-            "*": ["src/*"]
+            "*": ["./src/*"]
         },
+        // "baseUrl": "./src/",
+        // "paths": {
+        //     "*": ["src/*"]
+        // },
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true
     },
