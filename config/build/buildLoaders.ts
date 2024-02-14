@@ -18,7 +18,9 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
                 options: {
                     modules: {
                         auto: (resPath: string) => resPath.includes('module'),
-                        localIdentName: options.isDev ? '[path][name]__[local]--[hash:base64:4]' : '[hash:base64:8]',
+                        localIdentName: options.isDev
+                            ? '[path][name]__[local]--[hash:base64:4]'
+                            : '[hash:base64:8]',
                     },
                 },
             },
@@ -40,5 +42,22 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         ],
     };
 
-    return [typescriptLoader, cssLoader, svgLoader, fileLoader];
+    const babelLoader = {
+        test: /\.(js|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env'],
+            },
+        },
+    };
+
+    return [
+        fileLoader, 
+        svgLoader,
+        babelLoader,
+        typescriptLoader,
+        cssLoader,
+    ];
 }
