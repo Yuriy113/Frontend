@@ -12,16 +12,19 @@
             "*": ["./src/*"]
         },
         "strictNullChecks": true,
-        // "baseUrl": "./src/",
-        // "paths": {
-        //     "*": ["src/*"]
-        // },
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
     },
     "ts-node": {
         "compilerOptions": {
             "module": "CommonJS"
         }
-    }
+    },
+    "include": [
+        // "./config/jest/setupTests.ts",
+        "./src/",
+        // "./config/jest/jest.config.ts",
+        "./config/jest/"
+    ],
+
 }

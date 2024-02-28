@@ -1,5 +1,5 @@
 import { describe } from 'node:test';
-import { classNames } from './classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 
 void describe('classNames', () => {
     test('with only fitst param', () => {
